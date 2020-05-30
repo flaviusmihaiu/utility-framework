@@ -1,0 +1,22 @@
+// Variable Get
+@function variable-get($from, $keys...) {
+    @if is-map($from) {
+        @return map-get-deep($from, $keys...);
+    }
+    @else if is-list($from) {
+        @return nth($from, nth($keys, 1));
+    }
+    @else {
+        @error 'Expected MAP or a LIST but #{to-upper-case(type-of($from))}';
+    }
+}
+
+// Generate Negatives
+@function variable-generateNegatives($variables) {
+    @if type-of($variables) == 'map' {
+        @return map-generateNegatives($variables);
+    }
+    @if type-of($variables) == 'list' {
+        @return list-generateNegatives($variables);
+    }
+}

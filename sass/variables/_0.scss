@@ -1,0 +1,9 @@
+// Map
+$variable-map-variableName: (
+    
+) !default;
+
+// Function
+@function funcName($keys...) {
+    @return variable-get($variable-map-variableName, $keys...);
+}

@@ -1,0 +1,11 @@
+// Acronym
+$module-acronym-whiteSpace: 'ws' !default;
+
+// Map
+$module-map-whiteSpace: ('nowrap', 'pre', 'pre-line', 'pre-wrap') !default;
+
+// Mixin
+@mixin module-whiteSpace($breakpoint: null, $action: null) {
+    // FROM $module-map-whiteSpace
+    @include class-generate($module-acronym-whiteSpace, 'white-space', $module-map-whiteSpace, $breakpoint, $action);
+}

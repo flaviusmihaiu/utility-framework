@@ -1,0 +1,14 @@
+// Map
+$variable-map-size: (
+    1:  1rem,   //  16px
+    2:  2rem,   //  32px
+    3:  4rem,   //  64px
+    4:  8rem,   // 128px
+    5: 16rem,   // 256px
+    'full': 100%
+) !default;
+
+// Function
+@function variable-size($keys...) {
+    @return variable-get($variable-map-size, $keys...);
+}

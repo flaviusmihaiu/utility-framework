@@ -1,0 +1,19 @@
+// Acronym
+$module-acronym-borderWidth: 'bw' !default;
+$module-acronym-borderWidth-top: '#{$module-acronym-borderWidth}T' !default;
+$module-acronym-borderWidth-right: '#{$module-acronym-borderWidth}R' !default;
+$module-acronym-borderWidth-bottom: '#{$module-acronym-borderWidth}B' !default;
+$module-acronym-borderWidth-left: '#{$module-acronym-borderWidth}L' !default;
+
+// Map
+$module-map-borderWidth: $variable-map-borderWidth !default;
+
+// Mixin
+@mixin module-borderWidth($breakpoint: null, $action: null) {
+    // FROM $module-map-borderWidth
+    @include class-generate($module-acronym-borderWidth, 'border-width', $module-map-borderWidth, $breakpoint, $action);
+    @include class-generate($module-acronym-borderWidth-top, 'border-top-width', $module-map-borderWidth, $breakpoint, $action);
+    @include class-generate($module-acronym-borderWidth-right, 'border-right-width', $module-map-borderWidth, $breakpoint, $action);
+    @include class-generate($module-acronym-borderWidth-bottom, 'border-bottom-width', $module-map-borderWidth, $breakpoint, $action);
+    @include class-generate($module-acronym-borderWidth-left, 'border-left-width', $module-map-borderWidth, $breakpoint, $action);
+}

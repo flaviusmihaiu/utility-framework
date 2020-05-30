@@ -1,0 +1,27 @@
+// Acronym
+$module-acronym-align: '' !default;
+$module-acronym-align-alignContent: '#{$module-acronym-align}ac' !default;
+$module-acronym-align-alignItems: '#{$module-acronym-align}ai' !default;
+$module-acronym-align-alignSelf: '#{$module-acronym-align}as' !default;
+$module-acronym-align-justifyContent: '#{$module-acronym-align}jc' !default;
+$module-acronym-align-justifyItems: '#{$module-acronym-align}ji' !default;
+$module-acronym-align-justifySelf: '#{$module-acronym-align}js' !default;
+
+// Map
+// https://www.w3.org/TR/css-align/
+$module-map-align-alignContent  : ('baseline', 'first baseline', 'last baseline', 'stretch', 'space-around', 'space-between', 'space-evenly', 'center', 'start', 'end', 'flex-start', 'flex-end') !default;
+$module-map-align-alignItems    : ('stretch', 'baseline', 'first baseline', 'last baseline', 'self-start', 'self-end', 'center', 'start', 'end', 'flex-start', 'flex-end') !default;
+$module-map-align-alignSelf     : ('stretch', 'baseline', 'first baseline', 'last baseline', 'self-start', 'self-end', 'center', 'start', 'end', 'flex-start', 'flex-end') !default;
+$module-map-align-justifyContent: ('stretch', 'space-around', 'space-between', 'space-evenly', 'center', 'start', 'end', 'flex-start', 'flex-end', 'left', 'right') !default;
+$module-map-align-justifyItems  : ('stretch', 'baseline', 'first baseline', 'last baseline', 'self-start', 'self-end', 'center', 'start', 'end', 'flex-start', 'flex-end', 'left', 'right') !default;
+$module-map-align-justifySelf   : ('stretch', 'baseline', 'first baseline', 'last baseline', 'self-start', 'self-end', 'center', 'start', 'end', 'flex-start', 'flex-end') !default;
+
+// Mixin
+@mixin module-align($breakpoint: null, $action: null) {
+    @include class-generate($module-acronym-align-alignContent, 'align-content', $module-map-align-alignContent, $breakpoint, $action);
+    @include class-generate($module-acronym-align-alignItems, 'align-items', $module-map-align-alignItems, $breakpoint, $action);
+    @include class-generate($module-acronym-align-alignSelf, 'align-self', $module-map-align-alignSelf, $breakpoint, $action);
+    @include class-generate($module-acronym-align-justifyContent, 'justify-content', $module-map-align-justifyContent, $breakpoint, $action);
+    @include class-generate($module-acronym-align-justifyItems, 'justify-items', $module-map-align-justifyItems, $breakpoint, $action);
+    @include class-generate($module-acronym-align-justifySelf, 'justify-items', $module-map-align-justifySelf, $breakpoint, $action);
+}

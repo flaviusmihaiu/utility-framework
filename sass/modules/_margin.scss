@@ -1,0 +1,30 @@
+// Acronym
+$module-acronym-margin: 'm' !default;
+$module-acronym-margin-vertical: '#{$module-acronym-margin}Y' !default;
+$module-acronym-margin-horizontal: '#{$module-acronym-margin}X' !default;
+$module-acronym-margin-top: '#{$module-acronym-margin}T' !default;
+$module-acronym-margin-right: '#{$module-acronym-margin}R' !default;
+$module-acronym-margin-bottom: '#{$module-acronym-margin}B' !default;
+$module-acronym-margin-left: '#{$module-acronym-margin}L' !default;
+
+$module-map-margin: variable-generateNegatives($variable-map-space) !default;
+
+// Mixin
+@mixin module-margin($breakpoint: null, $action: null) {
+    // FROM $module-map-margin
+    @include class-generate($module-acronym-margin, 'margin', $module-map-margin, $breakpoint, $action);
+    @include class-generate($module-acronym-margin-vertical, ('margin-top', 'margin-bottom'), $module-map-margin, $breakpoint, $action);
+    @include class-generate($module-acronym-margin-horizontal, ('margin-left', 'margin-right'), $module-map-margin, $breakpoint, $action);
+    @include class-generate($module-acronym-margin-top, 'margin-top', $module-map-margin, $breakpoint, $action);
+    @include class-generate($module-acronym-margin-right, 'margin-right', $module-map-margin, $breakpoint, $action);
+    @include class-generate($module-acronym-margin-bottom, 'margin-bottom', $module-map-margin, $breakpoint, $action);
+    @include class-generate($module-acronym-margin-left, 'margin-left', $module-map-margin, $breakpoint, $action);
+
+    @include class-generate($module-acronym-margin, 'margin', 'auto', $breakpoint, $action);
+    @include class-generate($module-acronym-margin-vertical, ('margin-top', 'margin-bottom'), 'auto', $breakpoint, $action);
+    @include class-generate($module-acronym-margin-horizontal, ('margin-left', 'margin-right'), 'auto', $breakpoint, $action);
+    @include class-generate($module-acronym-margin-top, 'margin-top', 'auto', $breakpoint, $action);
+    @include class-generate($module-acronym-margin-right, 'margin-right', 'auto', $breakpoint, $action);
+    @include class-generate($module-acronym-margin-bottom, 'margin-bottom', 'auto', $breakpoint, $action);
+    @include class-generate($module-acronym-margin-left, 'margin-left', 'auto', $breakpoint, $action);
+}

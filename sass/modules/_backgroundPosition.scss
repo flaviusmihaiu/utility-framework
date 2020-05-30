@@ -1,0 +1,11 @@
+// Acronym
+$module-acronym-backgroundPosition: 'bp' !default;
+
+// Map
+$module-map-backgroundPosition: ('left top', 'left center', 'left bottom', 'right top', 'right center', 'right bottom', 'center top', 'center', 'center bottom') !default;
+
+// Mixin
+@mixin module-backgroundPosition($breakpoint: null, $action: null) {
+    // FROM $module-map-backgroundPosition;
+    @include class-generate($module-acronym-backgroundPosition, 'background-position', $module-map-backgroundPosition, $breakpoint, $action);
+}

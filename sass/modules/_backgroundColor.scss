@@ -1,0 +1,11 @@
+// Acronym
+$module-acronym-backgroundColor: 'bg' !default;
+
+// Map
+$module-map-backgroundColor: $variable-map-color !default;
+
+// Mixin
+@mixin module-backgroundColor($breakpoint: null, $action: null) {
+    // FROM $module-map-backgroundColor
+    @include class-generate($module-acronym-backgroundColor, 'background-color', $module-map-backgroundColor, $breakpoint, $action);
+}

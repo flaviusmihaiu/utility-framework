@@ -1,0 +1,11 @@
+// Acronym
+$module-acronym-fontStyle: 'fs' !default;
+
+// Map
+$module-map-fontStyle: ('normal', 'italic', 'oblique') !default;
+
+// Mixin
+@mixin module-fontStyle($breakpoint: null, $action: null) {
+    // FROM $module-map-fontStyle
+    @include class-generate($module-acronym-fontStyle, 'font-style', $module-map-fontStyle, $breakpoint, $action);
+}

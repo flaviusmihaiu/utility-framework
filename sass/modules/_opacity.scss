@@ -1,0 +1,14 @@
+// Acronym
+$module-acronym-opacity: 'op' !default;
+
+// Settings
+$modlue-setting-opacity-increment: 1 !default;
+
+// Mixin
+@mixin module-opacity($breakpoint: null, $action: null) {
+    // Incremental
+    @for $i from 0 to 11 / $modlue-setting-opacity-increment {
+        $value: $i * $modlue-setting-opacity-increment / 10;
+        .#{class-breakpoint($breakpoint)}#{class-action($action)}#{$module-acronym-opacity}#{$framework-setting-classSeparator}#{$i}#{class-action-pseudo($action)} { opacity: #{$value}; }
+    }
+}

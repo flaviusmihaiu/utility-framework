@@ -1,0 +1,12 @@
+// Acronym
+$module-acronym-order: 'or' !default;
+
+// Setting
+$module-setting-order: $framework-setting-flexColumns !default;
+
+// Mixin
+@mixin module-order($breakpoint: null, $action: null) {
+    @for $i from 1 to $module-setting-order + 1 {
+        .#{class-breakpoint($breakpoint)}#{class-action($action)}#{$module-acronym-order}#{$framework-setting-classSeparator}#{$i}#{class-action-pseudo($action)} { order: #{$i}; }
+    }
+}

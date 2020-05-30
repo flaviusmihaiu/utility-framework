@@ -1,0 +1,21 @@
+// Acronym
+$module-acronym-transformTranslate: 'tr' !default;
+
+// Setthings
+$module-transformTranslate-increment: 50 !default;
+
+// Mixin
+@mixin module-transformTranslate($breakpoint: null, $action: null) {
+    // Interate
+    $from: -100 / $module-transformTranslate-increment;
+    $to: (100 + $module-transformTranslate-increment) / $module-transformTranslate-increment;
+    @for $denominator from $from to $to {
+        $denominator: $denominator * $module-transformTranslate-increment;
+        @for $numerator from $from to $to {
+            $numerator: $numerator * $module-transformTranslate-increment;
+            .#{class-breakpoint($breakpoint)}#{class-action($action)}#{$module-acronym-transformTranslate}#{$framework-setting-classSeparator}#{class-name($numerator)}\/#{class-name($denominator)}#{class-action-pseudo($action)} {
+                transform: translate(#{$numerator} + '%', #{$denominator} + '%');
+            }
+        }
+    }
+}

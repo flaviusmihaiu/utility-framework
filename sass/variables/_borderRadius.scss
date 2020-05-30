@@ -1,0 +1,15 @@
+// Map
+$variable-map-borderRadius: (
+    0: 0,          // 0
+    1: 0.125rem,   // 2px
+    2: 0.250rem,   // 4px
+    3: 0.500rem,   // 8px
+    4: 1.000rem,   // 16px
+    'pill': 9999px,
+    'circle': 100%
+) !default;
+
+// Function
+@function borderRadius($keys...) {
+    @return variable-get($variable-map-borderRadius, $keys...);
+}

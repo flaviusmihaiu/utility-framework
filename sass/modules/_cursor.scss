@@ -1,0 +1,10 @@
+// Acronym
+$module-acronym-cursor: 'c' !default;
+
+// Map
+$module-map-cursor: ('default', 'context-menu', 'help', 'pointer', 'progress', 'wait', 'cell', 'crosshair', 'text', 'vertical-text', 'alias', 'copy', 'move', 'no-drop', 'not-allowed', 'grab', 'grabbing', 'all-scroll', 'col-resize', 'row-resize', 'ew-resize', 'ns-resize', 'nesw-resize', 'nwse-resize', 'zoom-in', 'zoom-out') !default;
+
+// Mixin
+@mixin module-cursor($breakpoint: null, $action: null) {
+    @include class-generate($module-acronym-cursor, 'cursor', $module-map-cursor, $breakpoint, $action);
+}

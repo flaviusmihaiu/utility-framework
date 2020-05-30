@@ -1,0 +1,19 @@
+// Acronym
+$module-acronym-borderColor: 'bc' !default;
+$module-acronym-borderColor-top: '#{$module-acronym-borderColor}T' !default;
+$module-acronym-borderColor-right: '#{$module-acronym-borderColor}R' !default;
+$module-acronym-borderColor-bottom: '#{$module-acronym-borderColor}B' !default;
+$module-acronym-borderColor-left: '#{$module-acronym-borderColor}L' !default;
+
+// Map
+$module-map-borderColor: $variable-map-color !default;
+
+// Mixin
+@mixin module-borderColor($breakpoint: null, $action: null) {
+    // FROM $module-map-borderColor
+    @include class-generate($module-acronym-borderColor, 'border-color', $module-map-borderColor, $breakpoint, $action);
+    @include class-generate($module-acronym-borderColor-top, 'border-top-color', $module-map-borderColor, $breakpoint, $action);
+    @include class-generate($module-acronym-borderColor-right, 'border-right-color', $module-map-borderColor, $breakpoint, $action);
+    @include class-generate($module-acronym-borderColor-bottom, 'border-bottom-color', $module-map-borderColor, $breakpoint, $action);
+    @include class-generate($module-acronym-borderColor-left, 'border-left-color', $module-map-borderColor, $breakpoint, $action);
+}

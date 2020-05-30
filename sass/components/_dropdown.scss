@@ -1,0 +1,36 @@
+// Dropdown Click
+details.dropdown {
+    position: relative;
+    display: inline-block;
+
+    > summary {
+        cursor: pointer;
+        user-select: none;
+        display: inline-block;
+
+        // Reset
+        list-style: none;
+        &:focus { outline: none; }
+        &::-webkit-details-marker { display:none; }
+    }
+}
+
+// Dropdown Hover
+.dropdown:not(details) {
+    position: relative;
+    display: inline-block;
+    
+    > :first-child {
+        cursor: pointer;
+        user-select: none;
+        display: inline-block;
+
+        // Reset
+        &:focus { outline: none; }
+    }
+
+    &:not(:hover) > :nth-child(2) { display: none; }
+    &:hover > :nth-child(2) {
+        display: initial;
+    }
+}

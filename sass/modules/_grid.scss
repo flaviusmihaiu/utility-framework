@@ -1,0 +1,40 @@
+// Acronym
+$module-acronym-grid: 'gd' !default;
+$module-acronym-grid-gridColumns: '#{$module-acronym-grid}c' !default;
+$module-acronym-gird-gridColumnSpan: '#{$module-acronym-grid}s' !default;
+$module-acronym-grid-gridAutoFlow: '#{$module-acronym-grid}f' !default;
+$module-acronym-grid-gridGap: '#{$module-acronym-grid}g' !default;
+
+// Settings
+$module-setting-grid-gridColumns: $framework-setting-gridColumns !default;
+
+// Map
+$module-map-grid-gridAutoFlow: ('row', 'column', 'dense', 'row dense', 'column dense') !default;
+
+// Mixin
+@mixin module-grid($breakpoint: null, $action: null) {
+    // GRID Columns and Span
+    @for $columns from 1 to $module-setting-grid-gridColumns + 1 {
+        .#{class-breakpoint($breakpoint)}#{class-action($action)}#{$module-acronym-grid-gridColumns}#{$framework-setting-classSeparator}#{$columns}#{class-action-pseudo($action)} {
+            grid-template-columns: repeat($columns, 1fr);
+            grid-auto-columns: auto;
+
+            @for $span from 1 to $module-setting-grid-gridColumns + 1 {
+                @if $span < $columns {
+                    > .#{$module-acronym-gird-gridColumnSpan}#{$framework-setting-classSeparator}#{$span} { grid-column: span #{$span}; }
+                }
+                @else {
+                    > .#{$module-acronym-gird-gridColumnSpan}#{$framework-setting-classSeparator}#{$span} { grid-column: 1 / -1; }
+                }
+            }
+            > .#{$module-acronym-gird-gridColumnSpan}#{$framework-setting-classSeparator}all { grid-column: 1 / -1; }
+        }
+    }
+
+    // GRID Attributes
+    @include class-generate($module-acronym-grid-gridAutoFlow, 'grid-auto-flow', $module-map-grid-gridAutoFlow, $breakpoint, $action);
+
+    // GRID Gap
+    // FROM $variable-map-space
+    @include class-generate($module-acronym-grid-gridGap, 'grid-gap', $variable-map-space, $breakpoint, $action);
+}

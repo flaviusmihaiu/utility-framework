@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Test - SASS</title>
+    <!-- STYLE -->
+    <link rel="stylesheet" href="../css/framework.min.css">
+    <!-- JAVASCRIPT -->
+    <script async src="../js/modal.js"></script>
+    <script async src="../js/drawer.js"></script>
+</head>
+<body>
+    <div class="w-full pY-5 pX-10 bg-gray-800 ds-flex fxd-row ai-center x-sticky xT-0">
+        <div class="f-4 fc-gray-100 ds-inlineFlex w-minContent">Logo</div>
+        <div class="mL-10 ta-left ds-inlineFlex w-maxContent">
+            <a href="#flex" class="fc-blue-100">Flex</a>
+            <a href="#grid" class="fc-green-100 mL-4">Grid</a>
+            <a href="#tooltip" class="fc-red-100 mL-4">Tooltip</a>
+        </div>
+        <div class="mL-auto w-minContent">
+            <details class="dropdown x-relative">
+                <summary class="bg-blue-100 pY-1 pX-2 br-1">Dropmenu</summary>
+                <div class="x-absolute xB-n1 xR-0 bg-blue-0 br-1 tr-0/100 w-maxContent ds-flex fxd-column wMin-4">
+                    <a href="#flex" class="fc-blue-500 pY-1 pX-2">Flex</a>
+                    <a href="#grid" class="fc-green-500 pY-1 pX-2">Grid</a>
+                    <a href="#tooltip" class="fc-red-500 pY-1 pX-2">Tooltip</a>
+                </div>
+            </details>
+        </div>
+    </div>
+    <div class="w-full lg:wMax-lg p-10 mX-auto">
+        <!-- FLEX -->
+        <h1 id="flex" class="tc-blue-500">Flex</h1>
+        <div class="ds-flex fxd-row fxw-wrap fxg-4">
+            <div class="w-1/12 bg-blue-200">one</div><div class="w-11/12 bg-blue-100">eleven</div>
+            <div class="w-2/12 bg-blue-200">two</div><div class="w-10/12 bg-blue-100">ten</div>
+            <div class="w-3/12 bg-blue-200">three</div><div class="w-9/12 bg-blue-100">nine</div>
+            <div class="w-4/12 bg-blue-200">four</div><div class="w-8/12 bg-blue-100">eight</div>
+            <div class="w-5/12 bg-blue-200">five</div><div class="w-7/12 bg-blue-100">seven</div>
+            <div class="w-6/12 bg-blue-200">six</div><div class="w-6/12 bg-blue-100">six</div>
+            <div class="w-7/12 bg-blue-200">seven</div><div class="w-5/12 bg-blue-100">five</div>
+            <div class="w-8/12 bg-blue-200">eight</div><div class="w-4/12 bg-blue-100">four</div>
+            <div class="w-9/12 bg-blue-200">nine</div><div class="w-3/12 bg-blue-100">three</div>
+            <div class="w-10/12 bg-blue-200">ten</div><div class="w-2/12 bg-blue-100">two</div>
+            <div class="w-11/12 bg-blue-200">eleven</div><div class="w-1/12 bg-blue-100">one</div>
+            <div class="w-full bg-blue-200">full</div>
+        </div>
+        <!-- GRID -->
+        <h1 id="grid" class="tc-green-500">Grid</h1>
+        <!-- GRID -->
+        <div class="ds-grid gdg-4 sm:gdc-3 md:gdc-6 lg:gdc-9 xl:gdc-12">
+            <div class="gds-1 bg-green-200">one</div><div class="gds-11 bg-green-100">eleven</div>
+            <div class="gds-2 bg-green-200">two</div><div class="gds-10 bg-green-100">ten</div>
+            <div class="gds-3 bg-green-200">three</div><div class="gds-9 bg-green-100">nine</div>
+            <div class="gds-4 bg-green-200">four</div><div class="gds-8 bg-green-100">eight</div>
+            <div class="gds-5 bg-green-200">five</div><div class="gds-7 bg-green-100">seven</div>
+            <div class="gds-6 bg-green-200">six</div><div class="gds-6 bg-green-100">six</div>
+            <div class="gds-7 bg-green-200">seven</div><div class="gds-5 bg-green-100">five</div>
+            <div class="gds-8 bg-green-200">eight</div><div class="gds-4 bg-green-100">four</div>
+            <div class="gds-9 bg-green-200">nine</div><div class="gds-3 bg-green-100">three</div>
+            <div class="gds-10 bg-green-200">ten</div><div class="gds-2 bg-green-100">two</div>
+            <div class="gds-11 bg-green-200">eleven</div><div class="gds-1 bg-green-100">one</div>
+            <div class="gds-all bg-green-200">full</div>
+        </div>
+    </div>
+</body>
+</html>

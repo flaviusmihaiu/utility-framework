@@ -1,0 +1,30 @@
+// Map Merge Multiple
+@function map-merge-multiple($maps...) {
+    $return: ();
+    @each $map in $maps {
+        $return: map-merge($return, $map);
+    }
+    @return $return;
+}
+
+// Map Get Deep
+@function map-get-deep($map, $keys...) {
+    @each $key in $keys {
+        $map: map-get($map, $key);
+    }
+    @return $map;
+}
+
+// Map Generate Negative
+@function map-generateNegatives($map) {
+    @each $key, $value in $map {
+        @if type-of($key) == 'number' {
+            $key: -1 * $key;
+        }
+        @if type-of($value) == 'number' {
+            $value: -1 * $value;
+        }
+        $map: map-merge($map, ($key: $value));
+    }
+    @return $map;
+}

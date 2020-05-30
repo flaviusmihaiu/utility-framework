@@ -1,0 +1,51 @@
+/** COMPONENTS **/
+
+// Button
+.button {
+    padding: s(1) s(2);
+    color: #FFF;
+    background: c('blue', 500);
+    border-radius: s(1);
+}
+
+// Drawer
+.drawerBackdrop { background-color: rgba(0,0,0,0.8); }
+.drawer {
+    padding: s(1) s(2);
+    background: #FAFAFA;
+    box-shadow: 0 1px s(1) 0 rgba(0,0,0,0.2);
+}
+
+// Dropdown
+.dropdown {
+    *:nth-child(2) {
+        padding: s(1) s(2);
+        color: #FFF;
+        background: rgba(0,0,0,0.9);
+        border-radius: s(1);
+    }
+}
+
+// Modal
+.modalBackdrop { background-color: rgba(0,0,0,0.8); }
+.modal {
+    padding: s(1) s(2);
+    background: #FAFAFA;
+    box-shadow: 0 1px s(1) 0 rgba(0,0,0,0.2);
+    border-radius: s(1);
+}
+
+// Table
+table {
+    td, th {
+        border: 1px solid #999;
+    }
+
+    td {
+        background-color: #EEE;
+    }
+
+    th {
+        background-color: #DDD;
+    }
+}

@@ -1,0 +1,11 @@
+// Acronym
+$module-acronym-backgroundSize: 'bs' !default;
+
+// Map
+$module-map-backgroundSize: ('cover', 'contain') !default;
+
+// Mixin
+@mixin module-backgroundSize($breakpoint: null, $action: null) {
+    // FROM $module-map-backgroundSize
+    @include class-generate($module-acronym-backgroundSize, 'background-size', $module-map-backgroundSize, $breakpoint, $action);
+}

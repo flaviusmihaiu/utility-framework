@@ -1,0 +1,25 @@
+// List Contains
+@function list-contains($list, $value) {
+    @return not not index($list, $value);
+}
+
+// List First
+@function list-first($list) {
+    @return nth($list, 1);
+}
+
+// List Last
+@function list-last($list) {
+    @return nth($list, length($list));
+}
+
+// List Generate Negative
+@function list-generateNegatives($list) {
+    @each $value in $list {
+        @if type-of($value) == 'number' {
+            $value: -1 * $value;
+        }
+        $list: append($list, $value);
+    }
+    @return $list;
+}

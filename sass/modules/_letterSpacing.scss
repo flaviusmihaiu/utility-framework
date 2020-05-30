@@ -1,0 +1,17 @@
+// Acronym
+$module-acronym-letterSpacing: 'ls' !default;
+
+// Map
+$module-map-letterSpacing: (
+    'narrower': -0.10rem,
+    'narrow'  : -0.05rem,
+    'normal'  : 'normal',
+    'wide'    :  0.10rem,
+    'wider'   :  0.25rem
+) !default;
+
+// Mixin
+@mixin module-letterSpacing($breakpoint: null, $action: null) {
+    // FROM $module-map-letterSpacing
+    @include class-generate($module-acronym-letterSpacing, 'letter-spacing', $module-map-letterSpacing, $breakpoint, $action);
+}

@@ -1,0 +1,11 @@
+// Acronym
+$module-acronym-fontSize: 'f' !default;
+
+// Map
+$module-map-fontSize: $variable-map-fontSize !default;
+
+// Mixin
+@mixin module-fontSize($breakpoint: null, $action: null) {
+    // FROM $module-map-fontSize
+    @include class-generate($module-acronym-fontSize, 'font-size', $module-map-fontSize, $breakpoint, $action);
+}

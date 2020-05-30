@@ -1,0 +1,32 @@
+// Acronym
+$module-acronym-height: 'h' !default;
+$module-acronym-height-min: '#{$module-acronym-height}Min' !default;
+$module-acronym-height-max: '#{$module-acronym-height}Max' !default;
+
+// Settings
+$module-setting-height-increment: 25 !default;
+
+// Map
+$module-map-height: $variable-map-size !default;
+
+// Mixin
+@mixin module-height($breakpoint: null, $action: null) {
+    // FROM $module-map-height
+    @include class-generate($module-acronym-height, 'height', $module-map-height, $breakpoint, $action);
+    @include class-generate($module-acronym-height-min, 'min-height', $module-map-height, $breakpoint, $action);
+    @include class-generate($module-acronym-height-max, 'max-height', $module-map-height, $breakpoint, $action);
+    // FROM $variable-map-breakpoint
+    @include class-generate($module-acronym-height, 'height', $variable-map-breakpoint, $breakpoint, $action);
+    @include class-generate($module-acronym-height-min, 'min-height', $variable-map-breakpoint, $breakpoint, $action);
+    @include class-generate($module-acronym-height-max, 'max-height', $variable-map-breakpoint, $breakpoint, $action);
+
+    // Incremental
+    @for $i from 1 to (100 + $module-setting-height-increment) / $module-setting-height-increment {
+        $value: $i * $module-setting-height-increment;
+        .#{class-breakpoint($breakpoint)}#{class-action($action)}#{$module-acronym-height}#{$framework-setting-classSeparator}#{$value}vh#{class-action-pseudo($action)} { height: #{$value}vh; }
+        .#{class-breakpoint($breakpoint)}#{class-action($action)}#{$module-acronym-height-min}#{$framework-setting-classSeparator}#{$value}vh#{class-action-pseudo($action)} { min-height: #{$value}vh; }
+        .#{class-breakpoint($breakpoint)}#{class-action($action)}#{$module-acronym-height-max}#{$framework-setting-classSeparator}#{$value}vh#{class-action-pseudo($action)} { max-height: #{$value}vh; }
+        .#{class-breakpoint($breakpoint)}#{class-action($action)}#{$module-acronym-height-min}#{$framework-setting-classSeparator}#{$value}per#{class-action-pseudo($action)} { min-height: #{$value} + '%'; }
+        .#{class-breakpoint($breakpoint)}#{class-action($action)}#{$module-acronym-height-max}#{$framework-setting-classSeparator}#{$value}per#{class-action-pseudo($action)} { max-height: #{$value} + '%'; }
+    }
+}

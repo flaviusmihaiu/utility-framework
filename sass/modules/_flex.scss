@@ -1,0 +1,51 @@
+// Acronym
+$module-acronym-flex: 'fx' !default;
+$module-acronym-flex-flexDirection: '#{$module-acronym-flex}d' !default;
+$module-acronym-flex-flexWrap: '#{$module-acronym-flex}w' !default;
+$module-acronym-flex-flexGap: '#{$module-acronym-flex}g' !default;
+
+// Settings
+$module-setting-flex-flexColumns: $framework-setting-flexColumns !default;
+
+// Map
+$module-map-flex-flexDirection: ('row', 'row-reverse', 'column', 'column-reverse') !default;
+$module-map-flex-flexWrap: ('wrap', 'nowrap', 'wrap-reverse') !default;
+
+// Mixin
+@mixin module-flex($breakpoint: null, $action: null) {
+    // FLEX Widths
+    @for $denominator from 1 to $module-setting-flex-flexColumns + 1 {
+        @for $numerator from 1 to $denominator {
+            .#{class-breakpoint($breakpoint)}#{class-action($action)}#{$module-acronym-width}#{$framework-setting-classSeparator}#{$numerator}\/#{$denominator}#{class-action-pseudo($action)} {
+                width: percentage($numerator / $denominator);
+            }
+        }
+    }
+
+    // FLEX Attributes
+    @include class-generate($module-acronym-flex-flexDirection, 'flex-direction', $module-map-flex-flexDirection, $breakpoint, $action);
+    @include class-generate($module-acronym-flex-flexWrap, 'flex-wrap', $module-map-flex-flexWrap, $breakpoint, $action);
+
+    // FLEX Gap
+    // FROM $map-variable-space
+    @if type-of($variable-map-space) == 'map' {
+        @each $key, $value in $variable-map-space {
+            @if $value > 0 {
+                .#{class-breakpoint($breakpoint)}#{class-action($action)}#{$module-acronym-flex-flexGap}#{$framework-setting-classSeparator}#{class-name($key)}#{class-action-pseudo($action)} {
+                    margin: (-1 * $value / 2);
+                    > * { padding: ($value / 2); } 
+                }
+            }
+        }
+    }
+    @else if type-of($variable-map-space) == 'list' {
+        @each $value in $variable-map-space {
+            @if $value > 0 {
+                .#{class-breakpoint($breakpoint)}#{class-action($action)}#{$module-acronym-flex-flexGap}#{$framework-setting-classSeparator}#{class-name($value)}#{class-action-pseudo($action)} {
+                    margin: (-1 * $value / 2);
+                    > * { padding: ($value / 2); } 
+                }
+            }
+        }
+    }
+}

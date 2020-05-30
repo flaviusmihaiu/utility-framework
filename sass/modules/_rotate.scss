@@ -1,0 +1,18 @@
+// Acronym
+$module-acronym-rotate: 'rt' !default;
+
+// Settings
+$module-setting-rotate-increment: 45 !default;
+
+// Mixin
+@mixin module-rotate($breakpoint: null, $action: null) {
+    @if $breakpoint != null { $breakpoint: '#{$breakpoint}\\:'; }
+
+    // Incremental
+    $from: -360 / $module-setting-rotate-increment;
+    $to: (360 + $module-setting-rotate-increment) / $module-setting-rotate-increment;
+    @for $i from $from to $to {
+        $value: $i * $module-setting-rotate-increment * 1deg;
+        @include class-generate($module-acronym-rotate, 'rotate', $value, $breakpoint, $action);
+    }
+}

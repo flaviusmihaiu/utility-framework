@@ -1,0 +1,11 @@
+// Acronym
+$module-acronym-wordBreak: 'wb' !default;
+
+// Map
+$module-map-wordBreak: ('break-all', 'keep-all', 'break-word') !default;
+
+// Mixin
+@mixin module-wordBreak($breakpoint: null, $action: null) {
+    // FROM $module-map-wordBreak
+    @include class-generate($module-acronym-wordBreak, 'word-break', $module-map-wordBreak, $breakpoint, $action);
+}

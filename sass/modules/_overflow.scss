@@ -1,0 +1,12 @@
+// Acronym
+$module-acronym-overflow: 'of' !default;
+$module-acronym-overflow: '#{$acronymModuleOverflow}X' !default;
+$module-acronym-overflow: '#{$acronymModuleOverflow}Y' !default;
+
+// Map
+$module-map-overflow: ('visible', 'hidden', 'scroll', 'auto');
+
+// Mixin
+@mixin module-overflow($breakpoint: null, $action: null) {
+    @include class-generate($module-acronym-overflow, 'overflow', $module-map-overflow, $breakpoint, $action);
+}

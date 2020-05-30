@@ -1,0 +1,11 @@
+// Acronym
+$module-acronym-visibility: 'vs' !default;
+
+// Map
+$module-map-visibility: ('visible', 'hidden') !default;
+
+// Mixin
+@mixin module-visibility($breakpoint: null, $action: null) {
+    // FROM $module-map-visibility
+    @include class-generate($module-acronym-visibility, 'visibility', $module-map-visibility, $breakpoint, $action);
+}

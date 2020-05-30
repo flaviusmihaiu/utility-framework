@@ -1,0 +1,37 @@
+// Acronym
+$module-acronym-position: 'x' !default;
+$module-acronym-position-top: '#{$module-acronym-position}T' !default;
+$module-acronym-position-right: '#{$module-acronym-position}R' !default;
+$module-acronym-position-bottom: '#{$module-acronym-position}B' !default;
+$module-acronym-position-left: '#{$module-acronym-position}L' !default;
+
+// Map
+$module-map-position: ('static', 'relative', 'fixed', 'absolute', 'sticky') !default;
+$module-map-position-space: variable-generateNegatives($variable-map-space) !default;
+
+// Settings
+$module-setting-position-percentageIncrement: 50 !default;
+
+// Mixin
+@mixin module-position($breakpoint: null, $action: null) {
+
+    // FROM $module-map-position-space
+    @include class-generate($module-acronym-position-top, 'top', $module-map-position-space, $breakpoint, $action);
+    @include class-generate($module-acronym-position-right, 'right', $module-map-position-space, $breakpoint, $action);
+    @include class-generate($module-acronym-position-bottom, 'bottom', $module-map-position-space, $breakpoint, $action);
+    @include class-generate($module-acronym-position-left, 'left', $module-map-position-space, $breakpoint, $action);
+
+    // Incremental Percentage
+    $from: -100 / $module-setting-position-percentageIncrement;
+    $to: (100 + $module-setting-position-percentageIncrement) / $module-setting-position-percentageIncrement;
+    @for $i from $from to $to {
+        $value: $i * $module-setting-position-percentageIncrement * 1%;
+        @include class-generate($module-acronym-position-top, 'top', $value, $breakpoint, $action);
+        @include class-generate($module-acronym-position-right, 'right', $value, $breakpoint, $action);
+        @include class-generate($module-acronym-position-bottom, 'bottom', $value, $breakpoint, $action);
+        @include class-generate($module-acronym-position-left, 'left', $value, $breakpoint, $action);
+    }
+
+    // FROM $module-map-position
+    @include class-generate($module-acronym-position, 'position', $module-map-position, $breakpoint, $action);
+}

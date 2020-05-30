@@ -1,0 +1,11 @@
+// Acronym
+$module-acronym-zIndex: 'z' !default;
+
+// Map
+$module-map-zIndex: $variable-map-zIndex !default;
+
+// Mixin
+@mixin module-zIndex($breakpoint: null, $action: null) {
+    // FROM $variable-map-zIndex
+    @include class-generate($module-acronym-zIndex, 'z-index', $module-map-zIndex, $breakpoint, $action);
+}

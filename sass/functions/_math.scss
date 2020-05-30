@@ -1,0 +1,155 @@
+// Steps
+$math-steps: 32 !default;
+
+// Constants to 32 decimal places
+$euler: 2.71828182845904523536028747135266;
+$pi: 3.14159265358979323846264338327950;
+$ln2: 0.69314718055994530941723212145817;
+$ln10: 2.30258509299404568401799145468436;
+$sqrt2: 1.41421356237309504880168872420969;
+
+// Power
+// @param {Number} $num
+// @param {Number} $exponent
+// @return {Number}
+@function power-integer($num, $exponent: 1) {
+    // n^(-x) = 1 / n^x
+    @if $exponent < 0 {
+        @return 1 / math-power($num, $exponent * -1);
+    }
+    // n^0 = 1
+    @else if $exponent == 0 {
+        @return 1;
+    }
+    // n^1 = n
+    @else if $exponent == 1 {
+        @return $num;
+    }
+    // n^x = n*n*n*n... from 1 till x
+    @else if $exponent > 1 {
+        $result: 1;
+        @for $i from 0 to $exponent {
+            $result: $result * $num;
+        }
+        @return $result;
+    }
+}
+
+// Factorial
+// @param {Number} $num
+// @return {Number}
+@function math-factorial($num) {
+    // 0! = 1
+    @if $num == 0 {
+        @return 1;
+    }
+    // n! = 1*2*3*4... till n
+    @else {
+        $result: 1;
+        @for $i from 1 to $num + 1 {
+            $result: $result * $i;
+        }
+        @return $result;
+    }
+}
+
+// Taylot Exponent - Maclaurin Series
+// @param {Number} $num
+// @return {Number}
+// @link https://en.wikipedia.org/wiki/Taylor_series
+@function taylor-exp($num, $steps: $math-steps) {
+    // 1 + n + n^i / i!
+    $result: 1;
+    @for $i from 1 to $steps {
+        $result: $result + power-integer($num, $i) / math-factorial($i);
+    }
+    @return $result;
+}
+
+// Taylor Log
+// @param {Number} $num
+// @return {Number}
+// @link https://en.wikipedia.org/wiki/Taylor_series
+@function taylor-log($num, $steps: $math-steps) {
+    $x: ($num - 1) / ($num + 1);
+    $result: 0;
+    @for $i from 0 to $steps {
+        $result: $result + power-integer($x, 2 * $i + 1) / (2 * $i + 1);
+    }
+    @return 2 * $result;
+}
+
+// Log Approximate
+// @param {Number} $num
+// @return {Number}
+@function log-approximate($num) {
+    @if $num >= 1 {
+        @return str-length(inspect(round($num))) - 1;
+    } @else if $num > 0 and $num < 1 {
+        @return -1 * str-length(inspect(round(1 / $num)));
+    }
+}
+
+// Log
+// @param {Number} $num
+// @param {Number} $log
+// @return {Number}
+@function math-log($num, $base: $euler) {
+    // log(x) = 0 where x = 1
+    @if $num == 1 {
+        @return 0;
+    }
+    // log(x) = 1 where x = (base)
+    @else if $num == $base {
+        @return 1;
+    }
+    // log(x, a) = log(x, 10) / log(base, 10)
+    @if $base == 10 {
+        @return math-log($num) / $ln10;
+    }
+    // log(x, euler)
+    @else {
+        $approximate: log-approximate($num);
+        @return $approximate * $ln10 + taylor-log($num / power-integer(10, $approximate));
+    }
+}
+
+// Power
+// @param {Number} $num
+// @param {Number} $exponent
+// @return {Number}
+@function math-power($num, $exponent: 1) {
+    @if round($exponent) == $exponent {
+        @return power-integer($num, $exponent);
+    }
+
+    @else if $num == 0 {
+        @return 0;
+    }
+
+    @else {
+        $int-exp: power-integer($num, round($exponent));
+        $exp: math-log($num) * ($exponent - round($exponent));
+        $taylor-exp: taylor-exp($exp);
+        $result: $int-exp * $taylor-exp;
+        
+        // round extremes
+        @if round($result) - $result < 0.00000001 {
+            @return round($result);
+        } @else {
+            @return $result;
+        }
+    }
+}
+
+// Root
+// @param {Number} $num
+// @param {Number} $root
+// @return {Number}
+@function math-root($num, $root: 2) {
+    @if $num == 2 and $root == 2 {
+        @return $sqrt2;
+    } @else {
+        @return math-power($num, 1 / $root);
+    }
+}

@@ -1,0 +1,156 @@
+// Create Module
+@mixin class-generate(
+    $acronym: null,
+    $property: null,
+    $values: (),
+    $breakpoint: null,
+    $action: null
+) {
+    .#{class-breakpoint($breakpoint)}#{class-action($action)}#{$acronym} {
+        @include class-generate-children($property, $values, $action);
+    }
+}
+
+@mixin class-generate-children(
+    $property: null,
+    $values: (),
+    $action: null
+) {
+    &#{$framework-setting-classSeparator} {
+        // MAP
+        @if type-of($values) == 'map' {
+            @each $key, $value in $values {
+                @if type-of($value) == 'map' {
+                    &#{class-name($key)} {
+                        @include class-generate-children($property, $value, $action);
+                    }
+                }
+                @else if type-of($value) == 'list' {
+                    @if $property == 'font-family' {
+                        &#{class-name($key)}#{class-action-pseudo($action)} {
+                            font-family: #{$value};
+                        }
+                    }
+                    @else if $propety == 'translate' {
+                        &#{class-name($key)}#{class-action-pseudo($action)} {
+                            transform: translate(#{$value});
+                        }
+                    }
+                    @else {
+                        &#{class-name($key)} {
+                            @include class-generate-children($property, $value, $action);
+                        }
+                    }
+                }
+                @else {
+                    @if type-of($property) == 'list' {
+                        &#{class-name($key)}#{class-action-pseudo($action)} {
+                            @each $prop in $property {
+                                #{$prop}: #{$value};
+                            }
+                        }
+                    }
+                    @else {
+                        $transform: ('scale', 'rotate', 'translateX', 'translateY');
+                        @if list-contains($transform, $property) {
+                            &#{class-name($key)}#{class-action-pseudo($action)} {
+                                transform: #{$property}(#{$value});
+                            }
+                        }
+                        @else {
+                            &#{class-name($key)}#{class-action-pseudo($action)} {
+                                #{$property}: #{$value};
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        @else if type-of($values) == 'list' {
+            @if $property == 'font-family' {
+                &#{class-name($values)}#{class-action-pseudo($action)} {
+                    font-family: #{$values};
+                }
+            }
+            @else if $property == 'translate' {
+                &#{class-name($values)}#{class-action-pseudo($action)} {
+                    transform: translate(#{$values});
+                }
+            }
+            @else {
+                @each $value in $values {
+                    &#{class-name($value)}#{class-action-pseudo($action)} {
+                        @each $prop in $property {
+                            #{$prop}: #{$value};
+                        }
+                    }
+                }
+            }
+        }
+
+        @else {
+            @if type-of($property) == 'list' {
+                &#{class-name($values)}#{class-action-pseudo($action)} {
+                    @each $prop in $property {
+                        #{$prop}: #{$values};
+                    }
+                }
+            }
+            @else {
+                $transform: ('scale', 'rotate', 'translateX', 'translateY');
+                @if list-contains($transform, $property) {
+                    &#{class-name($values)}#{class-action-pseudo($action)} {
+                        transform: #{$property}(#{$values});
+                    }
+                }
+                @else if $property == 'font-family' {
+                    &#{class-name($values)}#{class-action-pseudo($action)} {
+                        font-family: #{$values};
+                    }
+                }
+                @else {
+                    &#{class-name($values)}#{class-action-pseudo($action)} {
+                        #{$property}: #{$values};
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Generates Breakpoint Class Name
+@function class-breakpoint($breakpoint: null) {
+    @return if($breakpoint != null, '#{$breakpoint}\\:', $breakpoint);
+}
+
+// Generates Action Class Name
+@function class-action($action: null) {
+    @return if($action != null, '#{action}\\:', $action);
+}
+
+// Generate Action Pseudo
+@function class-action-pseudo($action: null) {
+    @return if($action != null, ':#{action}', $action);
+}
+
+// Generates Class Name from Value
+@function class-name($value: null) {
+    @if($framework-setting-className-byValue == true) {
+        @return $value;
+    }
+    @else {
+        @if type-of($value) == 'string' {
+            $value: str-case($framework-setting-className-convention, $value)
+        }
+        @else if type-of($value) == 'number' {
+            @if unit($value) == '%' {
+                $value: num-unitless($value);
+            }
+            @if $framework-setting-className-transformNegativeValues == true and $value < 0 {
+                $value: $framework-setting-className-negativeValuesPrefix + (-1 * $value);
+            }
+        }
+    }
+    @return $value;
+}

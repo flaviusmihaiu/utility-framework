@@ -1,0 +1,15 @@
+// Map
+$variable-map-borderWidth: (
+    0: 0,
+    1: 1px,        // 1px
+    2: 0.125rem,   // 2px
+    3: 0.250rem,   // 4px
+    4: 0.500rem,   // 8px
+    5: 1.000rem,   // 16px
+    6: 2.000rem    // 32px
+) !default;
+
+// Function
+@function variable-borderWidth($keys...) {
+    @return variable-get($variable-map-borderWidth, $keys...);
+}

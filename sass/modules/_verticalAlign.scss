@@ -1,0 +1,11 @@
+// Acronym
+$module-acronym-verticalAlign: 'va' !default;
+
+// Map
+$module-map-verticalAlign: ('baseline', 'sub', 'super', 'top', 'text-top', 'middle', 'bottom', 'text-bottom') !default;
+
+// Mixin
+@mixin module-verticalAlign($breakpoint: null, $action: null) {
+    // FROM $module-map-verticalAlign
+    @include class-generate($module-acronym-verticalAlign, 'vertical-align', $module-map-verticalAlign, $breakpoint, $action);
+}

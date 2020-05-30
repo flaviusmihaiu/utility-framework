@@ -1,0 +1,15 @@
+// Map
+$variable-map-zIndex: (
+    500 :  500,   // Dropdown
+    900 :  900,   // Backdrop
+    910 :  910,   // Drawer
+    1000: 1000,   // Backdrop
+    1010: 1010,   // Modal
+    1100: 1100,   // Backdrop
+    1110: 1110    // ---
+) !default;
+
+// Function
+@function variable-zIndex($keys...) {
+    @return variable-get($variable-map-zIndex, $keys...);
+}

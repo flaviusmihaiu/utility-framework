@@ -1,0 +1,10 @@
+// Acronym
+$module-acronym-lineHeight: 'lh' !default;
+
+$module-map-lineHeight: $variable-map-lineHeight !default;
+
+// Mixin
+@mixin module-lineHeight($breakpoint: null, $action: null) {
+    // FROM $module-map-lineHeight
+    @include class-generate($module-acronym-lineHeight, 'line-height', $module-map-lineHeight, $breakpoint, $action);
+}

@@ -1,0 +1,22 @@
+// Acronym
+$module-acronym-padding: 'p' !default;
+$module-acronym-padding-vertical: '#{$module-acronym-padding}Y' !default;
+$module-acronym-padding-horizontal: '#{$module-acronym-padding}X' !default;
+$module-acronym-padding-top: '#{$module-acronym-padding}T' !default;
+$module-acronym-padding-right: '#{$module-acronym-padding}R' !default;
+$module-acronym-padding-bottom: '#{$module-acronym-padding}B' !default;
+$module-acronym-padding-left: '#{$module-acronym-padding}L' !default;
+
+$module-map-padding: $variable-map-space !default;
+
+// Mixin
+@mixin module-padding($breakpoint: null, $action: null) {
+    // FROM $module-map-padding
+    @include class-generate($module-acronym-padding, 'padding', $module-map-padding, $breakpoint, $action);
+    @include class-generate($module-acronym-padding-vertical, ('padding-top', 'padding-bottom'), $module-map-padding, $breakpoint, $action);
+    @include class-generate($module-acronym-padding-horizontal, ('padding-left', 'padding-right'), $module-map-padding, $breakpoint, $action);
+    @include class-generate($module-acronym-padding-top, 'padding-top', $module-map-padding, $breakpoint, $action);
+    @include class-generate($module-acronym-padding-right, 'padding-right', $module-map-padding, $breakpoint, $action);
+    @include class-generate($module-acronym-padding-bottom, 'padding-bottom', $module-map-padding, $breakpoint, $action);
+    @include class-generate($module-acronym-padding-left, 'padding-left', $module-map-padding, $breakpoint, $action);
+}

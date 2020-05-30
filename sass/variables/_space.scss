@@ -1,0 +1,26 @@
+// Map
+$variable-map-space: (
+    0  : 0,           // 0px
+    1  : 0.25rem,     // 4px
+    2  : 0.50rem,     // 8px
+    3  : 0.75rem,     // 12px
+    4  : 1.00rem,     // 16px
+    5  : 1.25rem,     // 20px
+    6  : 1.50rem,     // 24px
+    7  : 2.00rem,     // 32px
+    8  : 2.50rem,     // 40px
+    9  : 3.00rem,     // 48px
+    10 : 4.00rem,     // 64px
+    11 : 5.00rem,     // 80px
+    12 : 6.00rem,     // 96px
+    13 : 8.00rem,     // 128px
+    14 : 10.00rem,    // 160px
+    15 : 12.00rem,    // 192px
+    16 : 14.00rem,    // 224px
+    17 : 16.00rem,    // 256px
+) !default;
+
+// Function
+@function variable-space($keys...) {
+    @return variable-get($variable-map-space, $keys...);
+}

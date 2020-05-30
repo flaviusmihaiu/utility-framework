@@ -1,0 +1,11 @@
+// Acronym
+$module-acronym-textAlign: 'ta' !default;
+
+// Map
+$module-map-textAlign: ('left', 'right', 'center', 'justify') !default;
+
+// Mixin
+@mixin module-textAlign($breakpoint: null, $action: null) {
+    // FROM $module-map-textAlign
+    @include class-generate($module-acronym-textAlign, 'text-align', $module-map-textAlign, $breakpoint, $action);
+}

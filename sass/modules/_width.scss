@@ -1,0 +1,22 @@
+// Acronym
+$module-acronym-width: 'w' !default;
+$module-acronym-width-min: '#{$module-acronym-width}Min' !default;
+$module-acronym-width-max: '#{$module-acronym-width}Max' !default;
+
+// Map
+$module-map-width: $variable-map-size !default;
+$module-map-width-attributes: ('max-content', 'min-content', 'available', 'fit-content') !default;
+
+// Mixin
+@mixin module-width($breakpoint: null, $action: null) {
+    // FROM $variable-map-space
+    @include class-generate($module-acronym-width, 'width', $module-map-width, $breakpoint, $action);
+    @include class-generate($module-acronym-width-min, 'min-width', $module-map-width, $breakpoint, $action);
+    @include class-generate($module-acronym-width-max, 'max-width', $module-map-width, $breakpoint, $action);
+    // FROM $variable-map-breakpoint
+    @include class-generate($module-acronym-width, 'width', $variable-map-breakpoint, $breakpoint, $action);
+    @include class-generate($module-acronym-width-min, 'min-width', $variable-map-breakpoint, $breakpoint, $action);
+    @include class-generate($module-acronym-width-max, 'max-width', $variable-map-breakpoint, $breakpoint, $action);
+    // FROM $module-map-width
+    @include class-generate($module-acronym-width, 'width', $module-map-width-attributes, $breakpoint, $action);
+}

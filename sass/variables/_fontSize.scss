@@ -1,0 +1,18 @@
+// Map
+$variable-map-fontSize: (
+    0: 0.750rem,   // 12px
+    1: 0.875rem,   // 14px
+    2: 1.000rem,   // 16px
+    3: 1.125rem,   // 18px
+    4: 1.250rem,   // 20px
+    5: 1.500rem,   // 24px
+    6: 2.250rem,   // 36px
+    7: 3.000rem,   // 48px
+    8: 5.000rem,   // 80px
+    9: 6.000rem    // 96px
+) !default;
+
+// Function
+@function variable-fontSize($keys...) {
+    @return variable-get($variable-map-fontSize, $keys...)
+}

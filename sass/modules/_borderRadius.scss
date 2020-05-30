@@ -1,0 +1,27 @@
+// Acronym
+$module-acronym-borderRadius: 'br' !default;
+$module-acronym-borderRadius-top: '#{$module-acronym-borderRadius}T' !default;
+$module-acronym-borderRadius-right: '#{$module-acronym-borderRadius}R' !default;
+$module-acronym-borderRadius-bottom: '#{$module-acronym-borderRadius}B' !default;
+$module-acronym-borderRadius-left: '#{$module-acronym-borderRadius}L' !default;
+$module-acronym-borderRadius-topLeft: '#{$module-acronym-borderRadius}TL' !default;
+$module-acronym-borderRadius-topRight: '#{$module-acronym-borderRadius}TR' !default;
+$module-acronym-borderRadius-bottomLeft: '#{$module-acronym-borderRadius}BL' !default;
+$module-acronym-borderRadius-bottomRight: '#{$module-acronym-borderRadius}BR' !default;
+
+// Map
+$module-map-borderRadius: $variable-map-borderRadius !default;
+
+// Mixin
+@mixin module-borderRadius($breakpoint: null, $action: null) {
+    // FROM $module-map-borderRadius
+    @include class-generate(#{$module-acronym-borderRadius}, 'border-radius', $module-map-borderRadius, $breakpoint, $action);
+    @include class-generate(#{$module-acronym-borderRadius-top}, ('border-top-left-radius', 'border-top-right-radius'), $module-map-borderRadius, $breakpoint, $action);
+    @include class-generate(#{$module-acronym-borderRadius-right}, ('border-top-right-radius', 'border-bottom-right-radius'), $module-map-borderRadius, $breakpoint, $action);
+    @include class-generate(#{$module-acronym-borderRadius-bottom}, ('border-bottom-right-radius', 'border-bottom-left-radius'), $module-map-borderRadius, $breakpoint, $action);
+    @include class-generate(#{$module-acronym-borderRadius-left}, ('border-top-left-radius', 'border-bottom-left-radius'), $module-map-borderRadius, $breakpoint, $action);
+    @include class-generate(#{$module-acronym-borderRadius-topLeft}, 'border-top-left-radius', $module-map-borderRadius, $breakpoint, $action);
+    @include class-generate(#{$module-acronym-borderRadius-topRight}, 'border-top-right-radius', $module-map-borderRadius, $breakpoint, $action);
+    @include class-generate(#{$module-acronym-borderRadius-bottomLeft}, 'border-bottom-right-radius', $module-map-borderRadius, $breakpoint, $action);
+    @include class-generate(#{$module-acronym-borderRadius-bottomRight}, 'border-bottom-left-radius', $module-map-borderRadius, $breakpoint, $action);
+}

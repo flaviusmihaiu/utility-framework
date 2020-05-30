@@ -1,0 +1,10 @@
+// Acronym
+$module-acronym-display: 'ds' !default;
+
+// Map
+$module-map-display: ('none', 'initial', 'inline', 'inline-block', 'inline-flex', 'inline-grid', 'inline-table', 'block', 'contents', 'flex', 'grid', 'none', 'initial', 'inherit', 'table', 'table-caption', 'table-column-group', 'table-header-group', 'table-footer-group', 'table-row-group', 'table-cell', 'table-column', 'table-row') !default;
+
+// Mixin
+@mixin module-display($breakpoint: null, $action: null) {
+    @include class-generate($module-acronym-display, 'display', $module-map-display, $breakpoint, $action);
+}

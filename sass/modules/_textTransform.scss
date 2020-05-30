@@ -1,0 +1,11 @@
+// Acronym
+$module-acronym-textTransform: 'tt' !default;
+
+// Map
+$module-map-textTransform: ('capitalize', 'uppercase', 'lowercase') !default;
+
+// Mixin
+@mixin module-textTransform($breakpoint: null, $action: null) {
+    // FROM $module-map-textTransform
+    @include class-generate($module-acronym-textTransform, 'text-transform', $module-map-textTransform, $breakpoint, $action);
+}

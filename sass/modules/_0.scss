@@ -1,0 +1,14 @@
+// Acronym
+$module-acronym-moduleName: '' !default;
+
+// Settings
+$module-setting-moduleName-settingName: '' !default;
+
+// Map
+$module-map-moduleName: () !default;
+
+// Mixin
+@mixin module-moduleName($breakpoint: null, $action: null) {
+    // FROM $module-map-moduleName
+    @include class-generate($module-acronym-moduleName, 'property', $module-map-moduleName, $breakpoint, $action);
+}

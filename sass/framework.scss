@@ -1,0 +1,143 @@
+// Theme
+// @import "themes/default";
+
+// Framework Settings
+$framework-setting-buildResponsive: true !default;
+$framework-setting-flexColumns: 12 !default;
+$framework-setting-gridColumns: 12 !default;
+
+// Module Settings
+$framework-setting-className-convention: 'camelCase' !default;
+$framework-setting-className-byValue: false !default;
+$framework-setting-classSeparator: '-' !default;
+$framework-setting-className-transformNegativeValues: true !default;
+$framework-setting-className-negativeValuesPrefix: 'n' !default;
+
+// Functions
+@import "functions/class";
+@import "functions/is";
+@import "functions/list";
+@import "functions/map";
+@import "functions/math";
+@import "functions/number";
+@import "functions/string";
+@import "functions/variable";
+
+// Variables
+// @import "variables/";
+@import "variables/borderRadius";
+@import "variables/borderWidth";
+@import "variables/breakpoint";
+@import "variables/color";
+@import "variables/fontFamily";
+@import "variables/fontSize";
+@import "variables/lineHeight";
+@import "variables/size";
+@import "variables/space";
+@import "variables/zIndex";
+
+// Base
+@import "base/default";
+
+// Modules
+// @import "modules/";
+@import "modules/align";
+@import "modules/backgroundColor";
+@import "modules/backgroundPosition";
+@import "modules/backgroundSize";
+@import "modules/borderColor";
+@import "modules/borderRadius";
+@import "modules/borderWidth";
+@import "modules/cursor";
+@import "modules/debug";
+@import "modules/display";
+@import "modules/flex";
+@import "modules/fontColor";
+@import "modules/fontFamily";
+@import "modules/fontSize";
+@import "modules/fontStyle";
+@import "modules/fontWeight";
+@import "modules/grid";
+@import "modules/height";
+@import "modules/letterSpacing";
+@import "modules/lineHeight";
+@import "modules/margin";
+@import "modules/opacity";
+@import "modules/order";
+@import "modules/overflow";
+@import "modules/padding";
+@import "modules/position";
+@import "modules/rotate";
+@import "modules/textAlign";
+@import "modules/textDecoration";
+@import "modules/textTransform";
+@import "modules/transformTranslate";
+@import "modules/verticalAlign";
+@import "modules/visibility";
+@import "modules/whiteSpace";
+@import "modules/width";
+@import "modules/wordBreak";
+@import "modules/zIndex";
+
+    // LOAD Non-Responsive Modules
+    // @include moduleName;
+    @include module-align;
+    @include module-backgroundColor;
+    @include module-backgroundPosition;
+    @include module-backgroundSize;
+    @include module-borderColor;
+    @include module-borderRadius;
+    @include module-borderWidth;
+    @include module-cursor;
+    @include module-display;
+    @include module-flex;
+    @include module-fontColor;
+    @include module-fontFamily;
+    @include module-fontSize;
+    @include module-fontStyle;
+    @include module-fontWeight;
+    @include module-grid;
+    @include module-height;
+    @include module-letterSpacing;
+    @include module-lineHeight;
+    @include module-margin;
+    @include module-opacity;
+    @include module-order;
+    @include module-overflow;
+    @include module-padding;
+    @include module-position;
+    @include module-rotate;
+    @include module-textAlign;
+    @include module-textDecoration;
+    @include module-textTransform;
+    @include module-transformTranslate;
+    @include module-verticalAlign;
+    @include module-visibility;
+    @include module-whiteSpace;
+    @include module-width;
+    @include module-wordBreak;
+    @include module-zIndex;
+
+    // LOAD Responsive Modules
+    @if $framework-setting-buildResponsive == true {
+        @each $breakpoint-key, $breakpoint-value in $variable-map-breakpoint {
+            @media all and (min-width: #{$breakpoint-value}) {
+                // @include moduleName($breakpoint-key);
+                @include module-display($breakpoint-key);
+                @include module-flex($breakpoint-key);
+                @include module-grid($breakpoint-key);
+                @include module-margin($breakpoint-key);
+                @include module-padding($breakpoint-key);
+                @include module-position($breakpoint-key);
+                @include module-transformTranslate($breakpoint-key);
+                @include module-width($breakpoint-key);
+            }
+        }
+    }
+
+// Components
+// @import "components/";
+@import "components/dropdown";
+
+// Styles
+// @import "styles/";

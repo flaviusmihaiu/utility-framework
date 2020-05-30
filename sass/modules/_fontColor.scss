@@ -1,0 +1,11 @@
+// Acronym
+$module-acronym-fontColor: 'fc' !default;
+
+// Map
+$module-map-fontColor: $variable-map-color !default;
+
+// Mixin
+@mixin module-fontColor($breakpoint: null, $action: null) {
+    // FROM $module-map-fontColor
+    @include class-generate($module-acronym-fontColor, 'color', $module-map-fontColor, $breakpoint, $action);
+}

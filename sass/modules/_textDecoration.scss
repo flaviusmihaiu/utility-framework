@@ -1,0 +1,11 @@
+// Acronym
+$module-acronym-textDecoration: 'td' !default;
+
+// Map
+$module-map-textDecoration: ('underline', 'overline', 'line-through') !default;
+
+// Mixin
+@mixin module-textDecoration($breakpoint: null, $action: null) {
+    // FROM $module-map-textDecoration
+    @include class-generate($module-acronym-textDecoration, 'text-decoration', $module-map-textDecoration, $breakpoint, $action);
+}

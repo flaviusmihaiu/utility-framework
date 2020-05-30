@@ -1,0 +1,158 @@
+// Is Number
+@function is-number($val) {
+    @if type-of($val) == 'number' {
+        @return true;
+    } @else {
+        @return false;
+    }
+}
+
+// Is Integer
+@function is-integer($val) {
+    @if
+        type-of($val) == 'number' 
+        and unitless($val) 
+        and round($val) == $val
+    {
+        @return true;
+    } @else {
+        @return false;
+    }
+}
+
+// Is Decimal
+@function is-decimal($val) {
+    @if 
+        type-of($val) == 'number' 
+        and unitless($val) 
+        and round($val) != $val
+    {
+        @return true;
+    } @else {
+        @return false;
+    }
+}
+
+// Is String
+@function is-string($val) {
+    @if type-of($val) == 'string' {
+        @return true;
+    } @else {
+        @return false;
+    }
+}
+
+// Is Color
+@function is-color($val) {
+    @if type-of($val) == 'color' {
+        @return true;
+    } @else {
+        @return false;
+    }
+}
+
+// Is List
+@function is-list($val) {
+    @if 
+        type-of($val) == 'list'
+        or type-of($val) == 'arglist'
+    {
+        @return true;
+    } @else {
+        @return false;
+    }
+}
+
+// Is Map
+@function is-map($val) {
+    @if type-of($val) == 'map' {
+        @return true;
+    } @else {
+        @return false;
+    }
+}
+
+// Is Bool
+@function is-bool($val) {
+    @if type-of($val) == 'bool' {
+        @return true;
+    } @else {
+        @return false;
+    }
+}
+
+// Is Time
+$is-time: ('ms', 's');
+@function is-time($val) {
+    @if 
+        type-of($val) == 'number'
+        and index($time, unit($val)) != null
+    {
+        @return true;
+    } @else {
+        @return false;
+    }
+}
+
+// Is Angle
+$is-angle: ('deg', 'rad', 'grad');
+@function is-angle($val) {
+    @if
+        type-of($val) == 'number'
+        and index($angle, unit($val)) != null
+    {
+        @return true;
+    } @else {
+        @return false;
+    }
+}
+
+// Is Length Relative
+$is-length-relative: ('em', 'rem', 'vw', 'vh', 'vmin', 'vmax', 'ex', 'ch');
+@function is-length-relative($val) {
+    @if
+        type-of($val) == 'number'
+        and index($is-length-relative, unit($val)) != null
+    {
+        @return true;
+    } @else {
+        @return false;
+    }
+}
+
+// Is Length Absolute
+$is-length-absolute: ('px', 'pt', 'mm', 'cm', 'in', 'pc');
+@function is-length-absolute($val) {
+    @if
+        type-of($val) == 'number'
+        and index($is-length-absolute, unit($val)) != null
+    {
+        @return true;
+    } @else {
+        @return false;
+    }
+}
+
+// Is Length
+@function is-length($val) {
+    @if
+        is-length-relative($val)
+        or is-length-absolute($val)
+    {
+        @return true;
+    } @else {
+        @return false;
+    }
+}
+
+// Is Percentage
+@function is-percentage($val) {
+    @if
+        type-of($val) == 'number'
+        and unit($val) == '%'
+    {
+        @return true;
+    } @else {
+        @return false;
+    }
+}
